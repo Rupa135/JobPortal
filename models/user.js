@@ -18,7 +18,14 @@ const User = sequelize.define("details" , {
                 args:true,
                 msg:"First name required"
             },
-            
+            isAlpha : {
+                args : true,
+                msg : "Please enter valid name"
+            },
+            checkLength(value) {
+                if (value.length > 15) {
+                    throw new Error("Length must be 15 or below");
+            }}
         }
     },
     LastName : {
@@ -28,7 +35,15 @@ const User = sequelize.define("details" , {
             notEmpty:{
                 args:true,
                 msg:"Last name required"
-            }
+            },
+            isAlpha : {
+                args : true,
+                msg : "Please enter valid name"
+            },
+            checkLength(value) {
+                if (value.length > 15) {
+                    throw new Error("Length must be 15 or below");
+            }}
         }
     },
     Email : {
@@ -50,12 +65,16 @@ const User = sequelize.define("details" , {
              }  
     },
     DOB : {
-        type : Sequelize.STRING,
+        type : Sequelize.DATE,
         allowNULL : false,
         validate:{
             notEmpty:{
                 args:true,
                 msg:"DOB required"
+            },
+            isDate : {
+                args : true,
+                mssg : "Enter date in valid format"
             }
         }
     },
@@ -66,7 +85,19 @@ const User = sequelize.define("details" , {
             notEmpty:{
                 args:true,
                 msg:"Phone number required"
+            },
+            isNumeric : {
+                args : true,
+                msg : "Please enter a number"
+            },
+            checkLength(value) {
+                if (value.length < 10) {
+                    throw new Error("Please enter valid number");
             }
+               else if (value.length > 10) {
+                    throw new Error("Please enter valid number");
+        }
+        }
         },
         unique: {
             args:true,

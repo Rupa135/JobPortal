@@ -1,9 +1,11 @@
 const User = require("../models/user")
 
 exports.getDetails = (req,res,next) => {
-    res.status(200).json({
-        details : [{name : "Rupa" , email : "rupasree124@gmail.com" , phoneNumber : "9123456345"}]
-    })
+    User.findAll()
+    .then(users => {
+        res.status(200).send(users)
+      })
+    .catch(err => console.log(err))
 }
 
 exports.createUser = (req,res,next) => {

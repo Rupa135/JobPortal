@@ -74,7 +74,7 @@ const User = sequelize.define("details" , {
             },
             isDate : {
                 args : true,
-                mssg : "Enter date in valid format"
+                msg : "Enter date in valid format"
             }
         }
     },

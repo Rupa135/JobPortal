@@ -107,79 +107,37 @@ const User = sequelize.define("users", {
     },
     address: {
         type: Sequelize.STRING,
-        allowNULL: false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Address is required"
-            },
-        }
     },
     city: {
         type: Sequelize.STRING,
-        allowNULL: false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "City is required"
-            },
-        }
     },
     postalCode: {
         type: Sequelize.INTEGER,
-        allowNULL: false,
         isNumeric : true
     },
     jobTitle: {
         type: Sequelize.STRING,
-        allowNULL: false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Job title required"
-            },
-        }
     },
     experience: {
-        type: Sequelize.INTEGER,
-        allowNULL: false,
-        isNumeric: true,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Experience required"
-            },
-        }
+        type: Sequelize.STRING,
+        allowNULL : false
     },
-
     skills: {
         type: Sequelize.STRING,
-        allowNULL: false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Skills required"
-            }
-        }
     },
     certifications: {
         type: Sequelize.STRING,
-        allowNULL: false
     },
     linkedInUrl: {
         type: Sequelize.STRING,
-        allowNULL: false,
         isUrl: true
     },
     resumeUrl: {
         type: Sequelize.STRING,
-        allowNULL: false,
         isUrl: true
     },
-
     comments: {
         type: Sequelize.STRING,
-        allowNULL: false
     },
 })
 

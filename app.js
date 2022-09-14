@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 app.use(routes)
 
 sequelize
+// .sync({force : true})
 .sync()
 .then(result => {
     console.log("Resync done!!")

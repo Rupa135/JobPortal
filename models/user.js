@@ -112,7 +112,7 @@ const User = sequelize.define("users", {
         type: Sequelize.STRING,
     },
     postalCode: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         isNumeric : true
     },
     jobTitle: {

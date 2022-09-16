@@ -1,5 +1,4 @@
 const User = require("../models/user")
-const { use } = require("../routes/details")
 
 exports.getUserDetails = (req, res, next) => {
   User.findAll()
@@ -13,14 +12,17 @@ exports.getUser = (req, res, next) => {
   const userId = req.params.id
   User.findByPk(userId)
     .then(data => {
-      res.status(200).send(data)
+      if(data){
+        res.status(200).send(data)
+      }
+      else{
+        res.status(500).send({
+          message: "User doesn't exists!!"
+        });
+      }
+      
     })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "User not found"
-      });
-    })
+    .catch(err => console.log(err))
 }
 
 exports.createUser = (req, res, next) => {
@@ -64,7 +66,7 @@ exports.createUser = (req, res, next) => {
     },
   })
 
-    .then(([data, created]) => {
+    .then(([data, created]) => {  //if new row is created then created=true
       if (created) {
         console.log(data);
         res.status(200).send(data)
@@ -121,10 +123,12 @@ exports.updateUserDetails = (req, res, next) => {
       user.resumeUrl = updatedResumeUrl
       user.comments = updatedComments
 
-      user.save()
-      res.status(200).send(user)
+      return user.save()  //returns a promise
     })
-    .catch(err => {
+    .then(data => {
+      res.status(200).send(data)
+    })
+    .catch(err => {   //It throws error for both findbyPk and save methods
       res.status(500).send({
         message:
           err.message || "User already exists"

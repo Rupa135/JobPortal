@@ -4,6 +4,8 @@ const routes = require("./routes/details")
 const User = require("./models/user")
 const bodyParser = require("body-parser")
 const cors = require("cors")
+const positionsRoute = require("./routes/openPositions")
+const positions = require("./models/jobPostion")
 
 const app = express()
 
@@ -22,10 +24,11 @@ app.use((req, res, next) => {
   });
 
 app.use(routes)
+app.use(positionsRoute)
 
 sequelize
-// .sync({force : true})
-.sync()
+.sync({force : true})
+// .sync()
 .then(result => {
     console.log("Resync done!!")
     app.listen(PORT, console.log(`Server started on port ${PORT}`));

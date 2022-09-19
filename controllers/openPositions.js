@@ -21,7 +21,7 @@ exports.getopenPositions = (req, res, next) => {
     Position.create({
         title : title,
         jobTitle : jobTitle,
-        joRole : jobRole,
+        jobRole : jobRole,
         openRoles : openRoles,
         location : location,
         workType : workType,

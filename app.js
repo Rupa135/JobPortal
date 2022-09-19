@@ -27,8 +27,8 @@ app.use(routes)
 app.use(positionsRoute)
 
 sequelize
-.sync({force : true})
-// .sync()
+// .sync({force : true})
+.sync()
 .then(result => {
     console.log("Resync done!!")
     app.listen(PORT, console.log(`Server started on port ${PORT}`));

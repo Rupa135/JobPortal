@@ -12,22 +12,10 @@ const jobPosition = sequelize.define("openPositions", {
     title : {
         type : Sequelize.STRING,
         allowNULL : false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Title is required"
-            }
-        }
     },
     jobTitle : {
         type : Sequelize.STRING,
         allowNULL : false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "JobTitle is required"
-            }
-        },
         unique: {
             args: true,
             msg: 'Mentioned job title already exists!!'
@@ -36,21 +24,11 @@ const jobPosition = sequelize.define("openPositions", {
     jobRole : {
         type : Sequelize.STRING,
         allowNULL : false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Job role is required"
-            }
-        }
     },
     openRoles : {
         type : Sequelize.INTEGER,
         allowNULL : false,
         validate: {
-            notEmpty: {
-                args: true,
-                msg: "open roles is required"
-            },
             isNumeric: {
                 args: true,
                 msg: "Please enter valid open roles"
@@ -59,23 +37,11 @@ const jobPosition = sequelize.define("openPositions", {
     },
     location : {
         type : Sequelize.STRING,
-        allowNULL : false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Location is required"
-            }
-        }
+        allowNULL : false
     },
     workType : {
         type : Sequelize.STRING,
-        allowNULL : false,
-        validate: {
-            notEmpty: {
-                args: true,
-                msg: "Work type is required"
-            }
-        }
+        allowNULL : false
     },
     responsibilities : {
         type : Sequelize.STRING,
